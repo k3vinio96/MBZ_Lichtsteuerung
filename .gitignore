@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+
+
+MBZ_Lichtsteuerung/.pio
+MBZ_Lichtsteuerung/.vscode/.browse.c_cpp.db*
+MBZ_Lichtsteuerung/.vscode/c_cpp_properties.json
+MBZ_Lichtsteuerung/.vscode/launch.json
+MBZ_Lichtsteuerung/.vscode/ipch
