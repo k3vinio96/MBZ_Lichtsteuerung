@@ -22,6 +22,14 @@ const char indexPage[] = R"=====(
         <form action="/Relay6" method="POST"><input type="submit" value="Toggle Relay 6"></form>
         <form action="/Relay7" method="POST"><input type="submit" value="Toggle Relay 7"></form>
         <form action="/Relay8" method="POST"><input type="submit" value="Toggle Relay 8"></form>
+        <form action="/Relay9" method="POST"><input type="submit" value="Toggle Relay 9"></form>
+        <form action="/Relay10" method="POST"><input type="submit" value="Toggle Relay 10"></form>
+        <form action="/Relay11" method="POST"><input type="submit" value="Toggle Relay 11"></form>
+        <form action="/Relay12" method="POST"><input type="submit" value="Toggle Relay 12"></form>
+        <form action="/Relay13" method="POST"><input type="submit" value="Toggle Relay 13"></form>
+        <form action="/Relay14" method="POST"><input type="submit" value="Toggle Relay 14"></form>
+        <form action="/Relay15" method="POST"><input type="submit" value="Toggle Relay 15"></form>
+        <form action="/Relay16" method="POST"><input type="submit" value="Toggle Relay 16"></form>
 
         <p>Copyright (C) 2024 --- MBZ "Saxonia" Oberlungwitz e.V.</a>.</p>
     </div>
