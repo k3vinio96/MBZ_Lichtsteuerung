@@ -9,6 +9,7 @@
 void StartAccessPoint(const char *, const char *);
 void ServerHandler();
 void handleRoot();
+void handleRelay(int RelayNo);
 void handleRelay1();
 void handleRelay2();
 void handleRelay3();
@@ -26,9 +27,6 @@ void handleRelay14();
 void handleRelay15();
 void handleRelay16();
 
-int Relay_2 = 5; // D1
-int Relay_3 = 4; // D2
-
 Adafruit_MCP23X17 mcp;
 
 const char *ssid = "MBZ_Licht";
@@ -45,11 +43,12 @@ void setup()
   // Pin Modes definieren
   pinMode(SCL, OUTPUT);
   pinMode(SDA, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 
   // Port Expander initialiseren
   if (mcp.begin_I2C())
   {
-    //alle 16 IO's als OUTPUT setzen
+    // alle 16 IO's als OUTPUT setzen
     for (int i = 0; i < 16; i++)
     {
       mcp.pinMode(i, OUTPUT);
@@ -60,6 +59,8 @@ void setup()
   StartAccessPoint(ssid, password);
   ServerHandler();
   server.begin();
+
+  digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void loop()
@@ -78,7 +79,6 @@ void StartAccessPoint(const char *ssid, const char *password)
 void ServerHandler()
 {
   server.on("/", HTTP_GET, handleRoot);
-
   server.on("/Relay1", HTTP_POST, handleRelay1);
   server.on("/Relay2", HTTP_POST, handleRelay2);
   server.on("/Relay3", HTTP_POST, handleRelay3);
@@ -89,7 +89,7 @@ void ServerHandler()
   server.on("/Relay8", HTTP_POST, handleRelay8);
   server.on("/Relay9", HTTP_POST, handleRelay9);
   server.on("/Relay10", HTTP_POST, handleRelay10);
-  server.on("/Relay11", HTTP_POST, handleRelay11;
+  server.on("/Relay11", HTTP_POST, handleRelay11);
   server.on("/Relay12", HTTP_POST, handleRelay12);
   server.on("/Relay13", HTTP_POST, handleRelay13);
   server.on("/Relay14", HTTP_POST, handleRelay14);
@@ -101,6 +101,13 @@ void handleRoot()
 {
   Serial.println("GET /");
   server.send(200, "text/html", indexPage);
+}
+
+void handleRelay(int RelayNo)
+{
+  mcp.digitalWrite(RelayNo, !mcp.digitalRead(RelayNo));
+  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
+  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 
 void handleRelay1()

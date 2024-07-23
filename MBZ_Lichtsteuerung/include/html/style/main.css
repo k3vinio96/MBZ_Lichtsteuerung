@@ -1,0 +1,9 @@
+.container{
+    width:100vw;
+}
+
+#button_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
