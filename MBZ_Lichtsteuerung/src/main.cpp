@@ -10,22 +10,6 @@ void StartAccessPoint(const char *, const char *);
 void ServerHandler();
 void handleRoot();
 void handleRelay(int RelayNo);
-void handleRelay1();
-void handleRelay2();
-void handleRelay3();
-void handleRelay4();
-void handleRelay5();
-void handleRelay6();
-void handleRelay7();
-void handleRelay8();
-void handleRelay9();
-void handleRelay10();
-void handleRelay11();
-void handleRelay12();
-void handleRelay13();
-void handleRelay14();
-void handleRelay15();
-void handleRelay16();
 
 Adafruit_MCP23X17 mcp;
 
@@ -79,22 +63,22 @@ void StartAccessPoint(const char *ssid, const char *password)
 void ServerHandler()
 {
   server.on("/", HTTP_GET, handleRoot);
-  server.on("/Relay1", HTTP_POST, handleRelay1);
-  server.on("/Relay2", HTTP_POST, handleRelay2);
-  server.on("/Relay3", HTTP_POST, handleRelay3);
-  server.on("/Relay4", HTTP_POST, handleRelay4);
-  server.on("/Relay5", HTTP_POST, handleRelay5);
-  server.on("/Relay6", HTTP_POST, handleRelay6);
-  server.on("/Relay7", HTTP_POST, handleRelay7);
-  server.on("/Relay8", HTTP_POST, handleRelay8);
-  server.on("/Relay9", HTTP_POST, handleRelay9);
-  server.on("/Relay10", HTTP_POST, handleRelay10);
-  server.on("/Relay11", HTTP_POST, handleRelay11);
-  server.on("/Relay12", HTTP_POST, handleRelay12);
-  server.on("/Relay13", HTTP_POST, handleRelay13);
-  server.on("/Relay14", HTTP_POST, handleRelay14);
-  server.on("/Relay15", HTTP_POST, handleRelay15);
-  server.on("/Relay16", HTTP_POST, handleRelay16);
+  server.on("/Relay1", HTTP_POST, handleRelay(0));
+  server.on("/Relay2", HTTP_POST, handleRelay(1));
+  server.on("/Relay3", HTTP_POST, handleRelay(2));
+  server.on("/Relay4", HTTP_POST, handleRelay(3));
+  server.on("/Relay5", HTTP_POST, handleRelay(4));
+  server.on("/Relay6", HTTP_POST, handleRelay(5));
+  server.on("/Relay7", HTTP_POST, handleRelay(6));
+  server.on("/Relay8", HTTP_POST, handleRelay(7));
+  server.on("/Relay9", HTTP_POST, handleRelay(8));
+  server.on("/Relay10", HTTP_POST, handleRelay(9));
+  server.on("/Relay11", HTTP_POST, handleRelay(10));
+  server.on("/Relay12", HTTP_POST, handleRelay(11));
+  server.on("/Relay13", HTTP_POST, handleRelay(12));
+  server.on("/Relay14", HTTP_POST, handleRelay(13));
+  server.on("/Relay15", HTTP_POST, handleRelay(14));
+  server.on("/Relay16", HTTP_POST, handleRelay(15));
 }
 
 void handleRoot()
@@ -113,111 +97,7 @@ void handleRelay(int RelayNo)
 void handleRelay1()
 {
   mcp.digitalWrite(0, !mcp.digitalRead(0));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay2()
-{
-  mcp.digitalWrite(1, !mcp.digitalRead(1));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay3()
-{
-  mcp.digitalWrite(2, !mcp.digitalRead(2));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay4()
-{
-  mcp.digitalWrite(3, !mcp.digitalRead(3));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay5()
-{
-  mcp.digitalWrite(4, !mcp.digitalRead(4));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay6()
-{
-  mcp.digitalWrite(5, !mcp.digitalRead(5));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay7()
-{
-  mcp.digitalWrite(6, !mcp.digitalRead(6));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay8()
-{
-  mcp.digitalWrite(7, !mcp.digitalRead(7));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay9()
-{
-  mcp.digitalWrite(8, !mcp.digitalRead(8));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay10()
-{
-  mcp.digitalWrite(9, !mcp.digitalRead(9));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay11()
-{
-  mcp.digitalWrite(10, !mcp.digitalRead(10));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay12()
-{
-  mcp.digitalWrite(11, !mcp.digitalRead(11));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay13()
-{
-  mcp.digitalWrite(12, !mcp.digitalRead(12));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay14()
-{
-  mcp.digitalWrite(13, !mcp.digitalRead(13));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay15()
-{
-  mcp.digitalWrite(14, !mcp.digitalRead(14));
-  server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleRelay16()
-{
-  mcp.digitalWrite(15, !mcp.digitalRead(15));
+  // Relay1_state = !relay1_State;
   server.sendHeader("Location", "/"); // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                   // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
